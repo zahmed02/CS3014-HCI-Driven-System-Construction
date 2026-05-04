@@ -1,98 +1,146 @@
-# HCI Driven Interface & Design
 
-A full‑stack event operations platform designed for organizers, vendors, staff, and attendees. It enables end‑to‑end event lifecycle management: from planning and vendor coordination to task assignment, registration, and feedback: all within a role‑based, interactive, and accessible interface.
+# EventOps – Event Management Platform
 
-The project was developed as an **Applied Human‑Computer Interaction (AHCI)** undergraduate capstone, applying HCI principles throughout the user experience.
+EventOps is a full‑stack event operations platform designed for **organizers**, **vendors**, **staff**, and **attendees**. It streamlines the entire event lifecycle – from planning and vendor coordination to task management and post‑event feedback – while demonstrating core **Human‑Computer Interaction (HCI)** principles in every interaction.
+
+> **Project type:** Applied Human‑Computer Interaction (AHCI) – Undergraduate final project  
+> **Semester:** 3rd year / 6th semester  
+> **Backend:** Oracle Database + Next.js API routes  
+> **Frontend:** Next.js (App Router) + Tailwind CSS
 
 ---
 
 ## Features
 
-- **Multi‑role dashboards** – Organizer, Vendor, Staff, Attendee
-- **Event management** – Create, edit, publish, cancel events (multi‑step wizard with auto‑save)
-- **Venue management** – Add, edit, delete venues with capacity, address, amenities
-- **Vendor proposals** – Vendors submit proposals; organizers approve/reject with comments (undo supported)
-- **Task management** – Organizers assign tasks to staff with priority & deadline; staff update status
-- **Issue reporting** – Staff report operational issues with descriptions
-- **Attendee registration** – Register for published events
-- **Feedback system** – Attendees submit ratings and comments for attended events
-- **Real‑time search** – Global search palette (Ctrl+K) across all modules
-- **Keyboard shortcuts** – Ctrl+S, Ctrl+N, Esc, ? (help modal)
-- **Role‑based theming** – Distinct background gradients for each role (blue, green, amber, purple)
-- **Interactive UI** – Glowing buttons, card hover effects, toast notifications, confirmation dialogs
+| Role | Capabilities |
+|------|--------------|
+| **Organizer** | Create/publish events, manage venues, approve/reject vendor proposals, assign tasks to staff, view live dashboards |
+| **Vendor** | Submit service proposals for events, upload documents, track approval status |
+| **Staff** | View assigned tasks, update task status (pending → in progress → completed), report on‑site issues |
+| **Attendee** | Register for events, see upcoming schedules, submit post‑event feedback (rating + comment) |
+
+### Common
+- Secure authentication (JWT + HTTP‑only cookies)
+- Role‑specific dashboards with personalised interfaces
+- Real‑time toast notifications for every action (create, update, delete, approve)
+- Keyboard shortcuts (`Ctrl+K` search, `Ctrl+S` submit, `Esc` cancel, `?` help)
+- Role‑based colour themes (blue/organizer, green/vendor, orange/staff, purple/attendee)
+- Auto‑save drafts for event creation
+- Undo support for critical actions (proposal submission, approval/rejection, task status changes)
+- Breadcrumb navigation + global command palette (`Ctrl+K`)
+- Fully responsive (mobile, tablet, desktop)
+
+---
+
+## HCI Principles Implemented
+
+Only principles that are **fully and strictly implemented** across the interface are listed below.
+
+| Principle | Implementation |
+|-----------|----------------|
+| **Usability – Efficiency** | One‑click approve/reject on vendor proposals; keyboard shortcuts (`Ctrl+S`, `Ctrl+N`, `Ctrl+K`, `?`); global search |
+| **Usability – Learnability** | Consistent layouts (sidebar → content), identical button styles, step‑by‑step event wizard, tooltips on icons |
+| **Usability – Satisfaction** | Role‑based colour schemes, glowing hover effects, smooth animations, dark theme with backdrop blur |
+| **Feedback** | Toast notifications for every user action; loading spinners during API calls; inline form validation; success/error colour cues |
+| **Consistency** | Same button variants (`default`, `outline`, `destructive`, `success`) across all modules; uniform card design; identical modal behaviour |
+| **Error Prevention** | Confirmation dialogs before deleting events/venues/tasks; form validation with Zod; auto‑save drafts for event creation |
+| **Recoverability** | Undo button appears after proposal submission, approval/rejection, or task status change (10‑second window) |
+| **Observability** | Breadcrumbs show current location; role‑specific dashboards display only relevant actions; progress indicators in multi‑step forms |
+| **Accessibility** | Keyboard‑navigable (Tab, Enter, Esc); focus rings on interactive elements; high contrast (white/dark); ARIA labels on dialogs |
+| **Pointer Design** | Hover states on all clickable elements; cards lift on hover; buttons scale and glow; cursor changes to pointer |
+| **Task Conformance** | Event creation wizard covers all needed steps; vendor proposal workflow (submit → approve/reject → comment) matches real‑world process |
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Next.js | 16.2.4 | React framework (App Router) |
-| React | 19.x | UI library |
-| TypeScript | 5.x | Type safety |
-| Tailwind CSS | 4.x | Styling & theming |
-| Lucide React | 0.475.x | Icons |
-| Sonner | 1.7.x | Toast notifications |
-| React Hook Form | 7.54.x | Form handling & validation |
-| Zod | 3.24.x | Schema validation |
-| Radix UI | – | Accessible Dialog, Tooltip components |
-| cmdk | – | Command palette (search) |
-| react-hotkeys-hook | – | Keyboard shortcuts |
+- **Next.js 16** (App Router, Turbopack)
+- **React 19**
+- **Tailwind CSS 4** (utility‑first styling, dark theme)
+- **TypeScript** (type safety)
+- **Lucide React** (icons)
+- **Sonner** (toast notifications)
+- **React Hook Form + Zod** (form handling + validation)
+- **Radix UI** (accessible dialogs, tooltips, dropdowns)
+- **cmdk** (command palette / global search)
+- **react‑hotkeys‑hook** (keyboard shortcuts)
 
-### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Node.js | 22.x | Runtime |
-| Next.js API Routes | – | Backend endpoints |
-| Oracle Database | 21c XE | Relational database |
-| node-oracledb | 6.7.x | Oracle driver |
-| bcrypt | 5.1.x | Password hashing |
-| jsonwebtoken | 9.0.x | JWT authentication |
+### Backend & Database
+- **Node.js 22** (runtime)
+- **Next.js API Routes** (backend endpoints)
+- **Oracle Database 21c XE** (relational DB)
+- **node‑oracledb** (Oracle driver)
+- **bcrypt** (password hashing)
+- **jsonwebtoken** (JWT authentication)
 
-### Database Schema (Oracle)
-- Users (organizer, vendor, staff, attendee)
-- Events
-- Venues
-- Vendor_Registrations
-- Tasks
-- Attendee_Registrations
-- Feedback
-- Issues
+### Dev Tools
+- **ESLint** (linting)
+- **Prettier** (code formatting)
+- **Tailwind Merge + clsx** (conditional class names)
 
 ---
 
-## Applied HCI Principles (Fully Implemented)
+## 🗄️ Database Schema (Oracle)
 
-| Principle | Implementation |
-|-----------|----------------|
-| **Effectiveness** | Role‑specific dashboards – each user sees only relevant actions and data. |
-| **Efficiency** | One‑click approve/reject for vendor proposals; global search (Ctrl+K); keyboard shortcuts. |
-| **Predictability** | Consistent layout across all dashboards (sidebar → main content). |
-| **Familiarity** | Standard icons (trash = delete, pencil = edit, eye = view). |
-| **Consistency** | Same button styles, card designs, and form behaviors across all pages. |
-| **Observability** | Breadcrumbs show current location; progress bars in multi‑step forms. |
-| **Recoverability** | Undo toast after proposal submission (10s window); confirmation dialog before delete. |
-| **Responsiveness** | Loading spinners during API calls; auto‑save drafts in localStorage. |
-| **Task Conformance** | Step‑by‑step wizard for event creation; logical task flows (register → feedback). |
-| **Error Prevention** | Inline form validation; confirmation dialogs for destructive actions. |
-| **Informative Feedback** | Toast notifications for every CRUD action (success/error/warning). |
-| **Hover Feedback** | Buttons glow, cards lift, links underline on hover (role‑specific colors). |
-| **Keyboard Accessibility** | Full keyboard navigation (Tab, Enter, Esc) plus shortcuts (Ctrl+S, Ctrl+N, ?, Ctrl+K). |
-| **Aesthetic Design** | Role‑based gradients (blue/organizer, green/vendor, amber/staff, purple/attendee). |
+Key tables:
+- `users` (authentication, roles)
+- `events`, `venues`
+- `vendor_registrations` (proposals)
+- `tasks`, `issues`
+- `attendee_registrations`, `feedback`
+
+All foreign keys enforce referential integrity. The schema uses `GENERATED BY DEFAULT AS IDENTITY` for primary keys.
 
 ---
 
-## Getting Started
+## Installation & Setup
 
 ### Prerequisites
-- Node.js 20+ and npm
-- Oracle Database 21c XE (or later)
-- Oracle SQL Developer Extension for VS Code (optional)
+- Node.js 22+
+- Oracle Database 21c XE (installed locally)
+- Git
 
-### Installation
+### Steps
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/eventops.git
-   cd eventops
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/eventops.git
+cd eventops
+
+# 2. Install dependencies
+npm install
+
+# 3. Create .env.local file
+echo "ORACLE_USER=eventops
+ORACLE_PASSWORD=abc123
+ORACLE_CONNECTION_STRING=localhost:1521/XEPDB1
+JWT_SECRET=your_secret_key" > .env.local
+
+# 4. Run Oracle schema (connect as eventops user and execute the provided SQL script)
+
+# 5. Start development server
+npm run dev
+```
+
+The application will be available at `http://localhost:3000`.
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── api/              # Backend API routes
+│   ├── dashboard/        # Role‑specific pages (organizer, vendor, staff, attendee)
+│   ├── login/            # Authentication pages
+│   └── register/
+├── components/
+│   ├── ui/               # Reusable UI (Button, Card, Dialog, Tooltip, Spinner)
+│   └── layouts/          # Sidebar, Breadcrumbs
+├── lib/                  # Oracle connection, auth utilities
+├── hooks/                # Custom hooks (useUndo)
+├── types/                # TypeScript interfaces
+└── styles/               # Global CSS (Tailwind, role themes)
+```
