@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  /* Default dark fallback */
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background-attachment: fixed;
+    transition: background 0.3s ease;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Role‑specific backgrounds – higher specificity */
+  body.theme-organizer {
+    background: linear-gradient(135deg, #032133 0%, #061644 100%) !important;
+  }
+  body.theme-vendor {
+    background: linear-gradient(135deg, #023023 0%, #06381a 100%) !important;
+  }
+  body.theme-staff {
+    background: linear-gradient(135deg, #3f1a05 0%, #522306 100%) !important;
+  }
+  body.theme-attendee {
+    background: linear-gradient(135deg, #2a0b58 0%, #270858 100%) !important;
+  }
 
-@media (prefers-color-scheme: dark) {
+  /* Primary color variables for buttons */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-primary: 59, 130, 246;
+    --color-primary-hover: 37, 99, 235;
+  }
+  .theme-organizer {
+    --color-primary: 37, 99, 235;
+    --color-primary-hover: 29, 78, 216;
+  }
+  .theme-vendor {
+    --color-primary: 22, 163, 74;
+    --color-primary-hover: 21, 128, 61;
+  }
+  .theme-staff {
+    --color-primary: 217, 119, 6;
+    --color-primary-hover: 180, 83, 9;
+  }
+  .theme-attendee {
+    --color-primary: 147, 51, 234;
+    --color-primary-hover: 126, 34, 206;
+  }
+
+  .bg-primary {
+    background-color: rgb(var(--color-primary));
+  }
+  .hover\:bg-primary\/90:hover {
+    background-color: rgba(var(--color-primary), 0.9);
+  }
+  .focus\:ring-primary:focus {
+    --tw-ring-color: rgb(var(--color-primary));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Button hover effects – using direct CSS, not @apply */
+  .btn-primary-hover {
+    background-color: rgba(var(--color-primary), 0.9);
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .btn-destructive-hover {
+    background-color: #b91c1c;
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(185, 28, 28, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .btn-success-hover {
+    background-color: #15803d;
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(21, 128, 61, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .btn-outline-hover {
+    background-color: #374151;
+    color: white;
+    border-color: #6b7280;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  .btn-ghost-hover {
+    background-color: #1f2937;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  /* Card hover – complete background change with accent border */
+  .card-hover {
+    transition: all 0.2s ease;
+  }
+  .card-hover:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(var(--color-primary), 0.7);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.3);
+  }
+  .card-hover:hover .card-title {
+    color: rgb(var(--color-primary));
+  }
+
+  /* Sidebar link hover – full background and text color flip */
+  .sidebar-link {
+    transition: all 0.15s;
+  }
+  .sidebar-link:hover {
+    background-color: rgba(var(--color-primary), 0.2);
+    color: white;
+    padding-left: 1rem;
+    border-left: 3px solid rgb(var(--color-primary));
+  }
+
+  /* Breadcrumb link hover */
+  .breadcrumb-link:hover {
+    color: rgb(var(--color-primary));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Input focus/hover */
+  input:hover, select:hover, textarea:hover {
+    border-color: rgba(var(--color-primary), 0.5);
+    background-color: #1f2937;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: rgb(var(--color-primary));
+    box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.3);
+    background-color: #111827;
+    color: white;
+  }
 }
