@@ -1,40 +1,98 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HCI Driven Interface & Design
 
-## Getting Started
+A full‑stack event operations platform designed for organizers, vendors, staff, and attendees. It enables end‑to‑end event lifecycle management – from planning and vendor coordination to task assignment, registration, and feedback – all within a role‑based, interactive, and accessible interface.
 
-First, run the development server:
+The project was developed as an **Applied Human‑Computer Interaction (AHCI)** undergraduate capstone, applying HCI principles throughout the user experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Multi‑role dashboards** – Organizer, Vendor, Staff, Attendee
+- **Event management** – Create, edit, publish, cancel events (multi‑step wizard with auto‑save)
+- **Venue management** – Add, edit, delete venues with capacity, address, amenities
+- **Vendor proposals** – Vendors submit proposals; organizers approve/reject with comments (undo supported)
+- **Task management** – Organizers assign tasks to staff with priority & deadline; staff update status
+- **Issue reporting** – Staff report operational issues with descriptions
+- **Attendee registration** – Register for published events
+- **Feedback system** – Attendees submit ratings and comments for attended events
+- **Real‑time search** – Global search palette (Ctrl+K) across all modules
+- **Keyboard shortcuts** – Ctrl+S, Ctrl+N, Esc, ? (help modal)
+- **Role‑based theming** – Distinct background gradients for each role (blue, green, amber, purple)
+- **Interactive UI** – Glowing buttons, card hover effects, toast notifications, confirmation dialogs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Next.js | 16.2.4 | React framework (App Router) |
+| React | 19.x | UI library |
+| TypeScript | 5.x | Type safety |
+| Tailwind CSS | 4.x | Styling & theming |
+| Lucide React | 0.475.x | Icons |
+| Sonner | 1.7.x | Toast notifications |
+| React Hook Form | 7.54.x | Form handling & validation |
+| Zod | 3.24.x | Schema validation |
+| Radix UI | – | Accessible Dialog, Tooltip components |
+| cmdk | – | Command palette (search) |
+| react-hotkeys-hook | – | Keyboard shortcuts |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Node.js | 22.x | Runtime |
+| Next.js API Routes | – | Backend endpoints |
+| Oracle Database | 21c XE | Relational database |
+| node-oracledb | 6.7.x | Oracle driver |
+| bcrypt | 5.1.x | Password hashing |
+| jsonwebtoken | 9.0.x | JWT authentication |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Database Schema (Oracle)
+- Users (organizer, vendor, staff, attendee)
+- Events
+- Venues
+- Vendor_Registrations
+- Tasks
+- Attendee_Registrations
+- Feedback
+- Issues
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 Applied HCI Principles (Fully Implemented)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# CS3014-Heuristic Redesign: A Comparative Study of Usability in Task Management Interfaces
->>>>>>> f18175d8d786a229b62b4c41a2f4e5766b6bc7c0
+| Principle | Implementation |
+|-----------|----------------|
+| **Effectiveness** | Role‑specific dashboards – each user sees only relevant actions and data. |
+| **Efficiency** | One‑click approve/reject for vendor proposals; global search (Ctrl+K); keyboard shortcuts. |
+| **Predictability** | Consistent layout across all dashboards (sidebar → main content). |
+| **Familiarity** | Standard icons (trash = delete, pencil = edit, eye = view). |
+| **Consistency** | Same button styles, card designs, and form behaviors across all pages. |
+| **Observability** | Breadcrumbs show current location; progress bars in multi‑step forms. |
+| **Recoverability** | Undo toast after proposal submission (10s window); confirmation dialog before delete. |
+| **Responsiveness** | Loading spinners during API calls; auto‑save drafts in localStorage. |
+| **Task Conformance** | Step‑by‑step wizard for event creation; logical task flows (register → feedback). |
+| **Error Prevention** | Inline form validation; confirmation dialogs for destructive actions. |
+| **Informative Feedback** | Toast notifications for every CRUD action (success/error/warning). |
+| **Hover Feedback** | Buttons glow, cards lift, links underline on hover (role‑specific colors). |
+| **Keyboard Accessibility** | Full keyboard navigation (Tab, Enter, Esc) plus shortcuts (Ctrl+S, Ctrl+N, ?, Ctrl+K). |
+| **Aesthetic Design** | Role‑based gradients (blue/organizer, green/vendor, amber/staff, purple/attendee). |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20+ and npm
+- Oracle Database 21c XE (or later)
+- Oracle SQL Developer Extension for VS Code (optional)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/eventops.git
+   cd eventops
