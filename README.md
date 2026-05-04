@@ -1,12 +1,7 @@
 
-# EventOps – Event Management Platform
+# HCI Driven Interface & Design
 
-EventOps is a full‑stack event operations platform designed for **organizers**, **vendors**, **staff**, and **attendees**. It streamlines the entire event lifecycle – from planning and vendor coordination to task management and post‑event feedback – while demonstrating core **Human‑Computer Interaction (HCI)** principles in every interaction.
-
-> **Project type:** Applied Human‑Computer Interaction (AHCI) – Undergraduate final project  
-> **Semester:** 3rd year / 6th semester  
-> **Backend:** Oracle Database + Next.js API routes  
-> **Frontend:** Next.js (App Router) + Tailwind CSS
+A full‑stack event operations platform designed for **organizers**, **vendors**, **staff**, and **attendees**. It streamlines the entire event lifecycle – from planning and vendor coordination to task management and post‑event feedback – while demonstrating core **Human‑Computer Interaction (HCI)** principles in every interaction.
 
 ---
 
