@@ -301,4 +301,3 @@ D:\ahci-project\
 | `src/lib/*` | Database connection (`oracle.ts`) and authentication logic (`auth.ts`). |
 | `src/hooks/` | Custom hooks like `useUndo` for rollback functionality. |
 | `src/components/*` | Global components (Sidebar, Breadcrumbs, SearchPalette, ShortcutsHelp). |
-```
