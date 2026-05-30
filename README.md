@@ -1,4 +1,4 @@
-# HCI Driven Operations Management System
+# Operations Management System
 
 ## Course: CS3014 Applied Human Computer Interaction
 ## Instructor: Sir Ghulam Murtaza
